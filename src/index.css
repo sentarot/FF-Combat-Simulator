@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* Hide scrollbar for cleaner cinematic look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a0510;
+}
+::-webkit-scrollbar-thumb {
+    background: #831843;
+    border-radius: 4px;
+}
+
+/* --- VISCERAL CSS EFFECTS --- */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px) rotate(-1deg); }
+    40%, 80% { transform: translateX(6px) rotate(1deg); }
+}
+.animate-shake {
+    animation: shake 0.35s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes damage-flash {
+    0% { filter: brightness(1) drop-shadow(0 0 0px red); }
+    50% { filter: brightness(1.6) drop-shadow(0 0 25px red); }
+    100% { filter: brightness(1) drop-shadow(0 0 0px red); }
+}
+.animate-damage {
+    animation: damage-flash 0.4s ease-out both;
+}
+
+@keyframes agitate-flash {
+    0% { filter: brightness(1) drop-shadow(0 0 0px #ec4899); }
+    50% { filter: brightness(1.4) drop-shadow(0 0 20px #ec4899); }
+    100% { filter: brightness(1) drop-shadow(0 0 0px #ec4899); }
+}
+.animate-agitate {
+    animation: agitate-flash 0.4s ease-out both;
+}
+
+@keyframes heavy-throb {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+}
+.animate-throb {
+    animation: heavy-throb 2.5s infinite ease-in-out;
+}
+
+@keyframes heat-pulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(147, 51, 234, 0.3); border-color: rgba(147, 51, 234, 0.5); }
+    50% { box-shadow: 0 0 35px rgba(147, 51, 234, 0.8); border-color: rgba(168, 85, 247, 1); }
+}
+.animate-heat {
+    animation: heat-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes heartbeat-vignette {
+    0%, 100% { box-shadow: inset 0 0 50px 10px rgba(220, 38, 38, 0.1); }
+    20% { box-shadow: inset 0 0 150px 30px rgba(220, 38, 38, 0.5); }
+    40% { box-shadow: inset 0 0 80px 15px rgba(220, 38, 38, 0.2); }
+    60% { box-shadow: inset 0 0 150px 30px rgba(220, 38, 38, 0.5); }
+}
+.animate-critical-hp {
+    animation: heartbeat-vignette 1.5s infinite linear;
+    pointer-events: none;
+}
