@@ -38,5 +38,56 @@ export const FLAVOR_TEXTS = [
   { type: 'warning', cond: (f) => f.milk >= 60 && f.milk < 80, text: `MILK BLOAT CRITICAL: The sheer pressure in {name}'s violently swollen milk ducts is constantly draining her health!` },
   { type: 'warning', cond: (f) => f.arousal >= 40 && f.arousal < 55 && !f.inHeat, text: `AROUSAL RISING: {name}'s loaded balls throb painfully! She is fighting a desperate, losing battle against a humiliating, forced climax!` },
   { type: 'warning', cond: (f) => f.arousal >= 60 && f.arousal < 70 && !f.inHeat, text: `HEAT IMMINENT: {name}'s willpower is cracking! One more spike of lust and her traitorous body will completely hijack her mind into Savage Heat!` },
-  { type: 'warning', cond: (f) => f.fetalSize >= 10 && f.fetalSize < 12 && !f.isDowned, text: `LABOR IMMINENT: The gruesome size of {name}'s macrosomic male litters practically paralyzes her, fighting her every desperate movement!` }
+  { type: 'warning', cond: (f) => f.fetalSize >= 10 && f.fetalSize < 12 && !f.isDowned, text: `LABOR IMMINENT: The gruesome size of {name}'s macrosomic male litters practically paralyzes her, fighting her every desperate movement!` },
+
+  // EARLY GAME TENSION — fire before degradation kicks in
+  { type: 'flavor', cond: (f) => f.fetalSize < 3 && f.voluptuousness < 10 && !f.isDowned, text: `{name} can feel it. Deep in her gut, the engineered seed is already dividing, burrowing into her uterine wall. The clock is ticking.` },
+  { type: 'flavor', cond: (f) => f.fetalSize < 3 && f.voluptuousness < 10 && !f.isDowned, text: `Every muscle on {name}'s body is still perfectly defined, glistening under the harsh arena lights. Savor it. The hormones haven't found her yet.` },
+  { type: 'flavor', cond: (f) => f.fetalSize < 2 && f.strain < 10 && !f.isDowned, text: `{name}'s joints are still razor-sharp, pivoting with elite precision. Somewhere deep in her bloodstream, the relaxin is already seeping into her cartilage.` },
+  { type: 'flavor', cond: (f) => f.fetalSize < 3 && !f.isDowned, text: `A faint, sick warmth pulses in {name}'s lower abdomen. The Strain 88.4 synthetic gametes are aggressively implanting, and there is absolutely nothing she can do about it.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 2 && f.fetalSize < 4 && f.voluptuousness < 15 && !f.isDowned, text: `{name} catches a glimpse of her reflection in the sweaty plexiglass barrier. Still lean. Still lethal. But her lower abs are softening, just barely. The theft has begun.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 1 && f.fetalSize < 3 && !f.isDowned, text: `The bookmakers haven't adjusted their odds yet. {name} still looks like a killer. But the engineered litter is doubling in mass every few minutes, invisibly eating her from inside.` },
+
+  // ENVIRONMENTAL / CROWD — the arena is alive
+  { type: 'flavor', cond: (f) => f.fetalSize >= 4 && f.voluptuousness >= 20 && !f.isDowned, text: `The Underhive crowd erupts in jeering catcalls as {name}'s widening hips force a visible waddle. Someone throws a nursing bra onto the canvas.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 7 && !f.isDowned, text: `Harsh sodium lights catch the oily sheen of stretched skin across {name}'s massive belly. The arena floor is slick with sweat, milk, and something worse.` },
+  { type: 'flavor', cond: (f) => f.voluptuousness >= 40 && !f.isDowned, text: `A roar of sick, objectifying laughter ripples through the stands as {name}'s ruined, jiggling frame stumbles. The betting screens flash wildly — the bookmakers are recalculating in real time.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 6 && f.milk >= 30, text: `Droplets of warm milk splatter the blood-stained canvas beneath {name}. The arena's drainage grates are already clogged with the fluids of previous fighters.` },
+  { type: 'flavor', cond: (f) => f.voluptuousness >= 50 && f.fetalSize >= 8 && !f.isDowned, text: `The stench of hormones, breast milk, and breeding-sweat hangs thick under the arena lights. {name} gags on the humid air, her own body contributing to the reek.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 5 && f.strain >= 30, text: `A section of the crowd begins rhythmically chanting, pounding the plexiglass barriers as {name} struggles to stay upright. They've seen this before. They know what comes next.` },
+  { type: 'flavor', cond: (f) => f.arousal >= 50 && !f.inHeat && !f.isDowned, text: `The arena cameras zoom in on {name}'s flushed, sweating face and the wet, visible bulge straining through her ruined shorts. The audience howls with perverse delight.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 9 && f.voluptuousness >= 60 && !f.isDowned, text: `The overhead display flashes {name}'s biometrics to the crowd — fetal mass, fat percentage, arousal index. Every stat is a public humiliation, broadcast to thousands of leering spectators.` },
+  { type: 'flavor', cond: (f) => f.downs >= 1 && f.fetalSize >= 6 && !f.isDowned, text: `Corner crews hose down {name}'s section of the canvas between exchanges. The pink, milk-streaked runoff pools in the drainage channel. The arena has seen far worse.` },
+  { type: 'flavor', cond: (f) => f.fetalSize >= 3 && f.fetalSize < 6 && !f.isDowned, text: `A veteran bettor in the front row leans forward, squinting at the subtle swell beneath {name}'s waistband. He nods slowly and taps his datapad. The smart money is already moving.` }
+];
+
+export const ENEMY_BARKS = [
+  // Early game — defiant, cocky
+  { cond: (f) => f.fetalSize < 4 && f.voluptuousness < 20 && !f.isDowned, text: `"You'll drop before I do, bitch."` },
+  { cond: (f) => f.fetalSize < 4 && f.voluptuousness < 20 && !f.isDowned, text: `"Still tight. Still fast. Still me."` },
+  { cond: (f) => f.fetalSize < 3 && !f.isDowned, text: `"I've killed bigger fighters than you before the seed even took."` },
+  { cond: (f) => f.fetalSize < 4 && f.stamina > 600 && !f.isDowned, text: `"Come closer. I want you to feel this."` },
+
+  // Mid degradation — frustrated, struggling
+  { cond: (f) => f.fetalSize >= 4 && f.fetalSize < 8 && !f.isDowned, text: `"These fucking parasites... I can feel them feeding..."` },
+  { cond: (f) => f.voluptuousness >= 25 && f.voluptuousness < 60 && !f.isDowned, text: `"My hips won't... stop... swaying..."` },
+  { cond: (f) => f.fetalSize >= 5 && f.fetalSize < 9 && !f.isDowned, text: `"This body isn't mine anymore. But my fists still are."` },
+  { cond: (f) => f.voluptuousness >= 30 && f.voluptuousness < 65 && !f.isDowned, text: `"I used to be... lean. Fast. I was beautiful. Not like THIS."` },
+  { cond: (f) => f.strain >= 30 && f.strain < 65 && !f.isDowned, text: `"My knees are... making sounds. Bad sounds."` },
+
+  // Late degradation — desperate, breaking
+  { cond: (f) => f.fetalSize >= 9 && !f.isDowned, text: `"I can't... feel my knees anymore..."` },
+  { cond: (f) => f.voluptuousness >= 65 && !f.isDowned, text: `"Just... one more punch. Just... one..."` },
+  { cond: (f) => f.fetalSize >= 10 && !f.isDowned, text: `"They're... so heavy... the brats are tearing me apart from inside..."` },
+  { cond: (f) => f.strain >= 70 && !f.isDowned, text: `"Everything... grinds. Every step is glass in my joints."` },
+  { cond: (f) => f.voluptuousness >= 75 && !f.isDowned, text: `"I'm drowning... in my own fat... I used to be a FIGHTER..."` },
+
+  // Arousal / heat
+  { cond: (f) => f.arousal >= 50 && f.arousal < 70 && !f.inHeat && !f.isDowned, text: `"N-no... not here... not in front of them..."` },
+  { cond: (f) => f.arousal >= 60 && !f.inHeat && !f.isDowned, text: `"Stop... looking at me... I can't... concentrate..."` },
+
+  // Downed
+  { cond: (f) => f.isDowned && f.fetalSize < 8, text: `"Get UP. GET UP, you stupid body!"` },
+  { cond: (f) => f.isDowned && f.fetalSize >= 8, text: `"I can't... the belly... it's pinning me... NO!"` },
+  { cond: (f) => f.isDowned && f.voluptuousness >= 50, text: `"My own fat... is holding me down... this isn't... I'm not this..."` }
 ];

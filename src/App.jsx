@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { INITIAL_STATE, MAX_HP, MAX_STAMINA, MAX_WILL, MAX_FETAL_SIZE, MAX_VOLUPTUOUSNESS, MAX_STRAIN, MAX_AROUSAL, MAX_MILK, MAX_DOWNS, TURNS_PER_ROUND, MAX_ROUNDS } from './data/constants.js';
-import { rand, FLAVOR_TEXTS, T_BELLY, T_BRATS, T_BRAT_ACT, T_TITS, T_FAT, T_SOFT, T_FAT_ACT, T_JOINTS, T_FLINCH } from './data/vocabulary.js';
+import { rand, FLAVOR_TEXTS, ENEMY_BARKS, T_BELLY, T_BRATS, T_BRAT_ACT, T_TITS, T_FAT, T_SOFT, T_FAT_ACT, T_JOINTS, T_FLINCH } from './data/vocabulary.js';
 import { getActions, getDownedActions, getEnemyDownedActions } from './data/actions.js';
 import { clamp, calcFetusWeight, calcCost, getRollModifier, evaluateRoll, isActionValid, triggerKnockdown } from './logic/combat.js';
-import { generateActionText, getPitstopLog } from './logic/textgen.js';
+import { generateActionText, getPitstopLog, generateRoundTransition } from './logic/textgen.js';
 
 import FighterCard from './components/FighterCard.jsx';
 import CombatLog from './components/CombatLog.jsx';
@@ -74,6 +74,7 @@ function App() {
           stateObj.range = 1;
           stateObj.player.movement = 'hold';
           stateObj.log.push(`--- END OF ROUND ${stateObj.round} ---`);
+          stateObj.log.push(generateRoundTransition(stateObj.round, stateObj.player, stateObj.enemy));
           stateObj.log.push("The degraded fighters collapse onto their stools for desperate, 2-turn maintenance.");
       }
       return stateObj;
@@ -87,7 +88,26 @@ function App() {
           if (currentRange < 2) {
               moverObj.stamina = clamp(moverObj.stamina - 25, 0, MAX_STAMINA);
               moverObj.isAdvancing = true;
-              const adj = moverObj.fetalSize >= 10 ? `roars, aggressively waddling her massive ${rand(T_BELLY)} forward` : (moverObj.fetalSize < 4 ? "explodes forward with lethal athletic speed" : "forces her heavy twin-bump forward, ignoring the sway of her hips");
+              let adj;
+              if (moverObj.fetalSize >= 10) {
+                  adj = rand([
+                      `roars, aggressively waddling her massive ${rand(T_BELLY)} forward`,
+                      `heaves her enormous, sloshing bulk forward with a guttural, animal scream, the canvas groaning under her shifting weight`,
+                      `forces her wrecking-ball belly forward step by agonizing step, her ${rand(T_JOINTS)} popping audibly with every stride`
+                  ]);
+              } else if (moverObj.fetalSize >= 4) {
+                  adj = rand([
+                      "forces her heavy twin-bump forward, ignoring the sway of her hips",
+                      `drives forward, her thickening thighs chafing wetly as she closes the distance with brutal determination`,
+                      `stomps forward, her swelling belly leading the charge like a battering ram of taut, pregnant flesh`
+                  ]);
+              } else {
+                  adj = rand([
+                      "explodes forward with lethal athletic speed",
+                      "closes distance with predatory aggression, her lean muscles coiling like a panther's",
+                      "surges forward, every lean sinew firing with elite gladiatorial precision"
+                  ]);
+              }
               logs.push(`[MOVE] ${moverObj.name} ${adj}, leaving her guard completely open in her desperation! (-Defense)`);
               return currentRange + 1;
           }
@@ -106,11 +126,49 @@ function App() {
 
               const result = evaluateRoll(rawRoll, mod);
               if (result.isSuccess) {
-                  const adj = moverObj.fetalSize >= 10 ? `clumsily backs away, dragging her sloshing ${rand(T_BELLY)} in a frantic retreat` : (moverObj.fetalSize < 4 ? "executes a flawless tactical backstep" : `steps back, gritting her teeth as her dense ${rand(T_FAT)} slaps heavily together`);
+                  let adj;
+                  if (moverObj.fetalSize >= 10) {
+                      adj = rand([
+                          `clumsily backs away, dragging her sloshing ${rand(T_BELLY)} in a frantic retreat`,
+                          `stumbles backward, her massive belly swinging dangerously as she desperately creates space`,
+                          `retreats in a humiliating, wide-hipped waddle, her ${rand(T_FAT)} slapping wetly with every terrified step`
+                      ]);
+                  } else if (moverObj.fetalSize >= 4) {
+                      adj = rand([
+                          `steps back, gritting her teeth as her dense ${rand(T_FAT)} slaps heavily together`,
+                          `disengages with visible effort, her swollen belly throwing off her balance as she backpedals`,
+                          `retreats, her widening hips catching on the motion and forcing a clumsy, uneven backstep`
+                      ]);
+                  } else {
+                      adj = rand([
+                          "executes a flawless tactical backstep",
+                          "pivots cleanly on sharp ankles and creates distance with professional ease",
+                          "slips backward with fluid athletic grace, resetting the range"
+                      ]);
+                  }
                   logs.push(`[MOVE] ${moverObj.name} ${adj}, successfully creating distance!`);
                   return currentRange - 1;
               } else {
-                  const failReason = moverObj.fetalSize >= 10 ? `her massive, sloshing ${rand(T_BELLY)} completely anchors her in place!` : (moverObj.fetalSize < 4 ? "she misjudges her footing on the slick canvas!" : `she tries to disengage, but feels the horrifying drag of her dense new ${rand(T_FAT)} tripping her up!`);
+                  let failReason;
+                  if (moverObj.fetalSize >= 10) {
+                      failReason = rand([
+                          `her massive, sloshing ${rand(T_BELLY)} completely anchors her in place!`,
+                          `the sheer gravitational drag of her enormous belly roots her to the bloody canvas!`,
+                          `her ${rand(T_JOINTS)} buckle under the shifting weight, locking her in place like a beached whale!`
+                      ]);
+                  } else if (moverObj.fetalSize >= 4) {
+                      failReason = rand([
+                          `she tries to disengage, but feels the horrifying drag of her dense new ${rand(T_FAT)} tripping her up!`,
+                          `her swollen belly's momentum carries her the wrong way, her thickened thighs tangling!`,
+                          `the unfamiliar weight distribution of her pregnant bump throws her footwork into chaos!`
+                      ]);
+                  } else {
+                      failReason = rand([
+                          "she misjudges her footing on the slick canvas!",
+                          "her heel catches on a wet patch of milk-streaked canvas!",
+                          "she slips on the sweaty mat, her clean footwork betrayed by the filthy arena floor!"
+                      ]);
+                  }
                   logs.push(`[MOVE FAILED] ${moverObj.name} desperately tries to retreat, but ${failReason}`);
                   return currentRange;
               }
@@ -427,6 +485,15 @@ function App() {
     triggerInvoluntary(newState.player, newLogs);
     triggerInvoluntary(newState.enemy, newLogs);
 
+    // SIOBHAN BARKS — give the opponent personality
+    if (Math.random() < 0.3) {
+        const validBarks = ENEMY_BARKS.filter(b => b.cond(newState.enemy));
+        if (validBarks.length > 0) {
+            const bark = rand(validBarks);
+            newLogs.push(`[BARK] ${newState.enemy.name}: ${bark.text}`);
+        }
+    }
+
     newState.playerLastAction = playerAction ? playerAction.type : 'none';
 
     const eIsResting = false;
@@ -496,6 +563,25 @@ function App() {
 
     evaluateArousal(newState.player, newLogs, false);
     evaluateArousal(newState.enemy, newLogs, false);
+
+    // MOMENTUM TRACKING
+    if (playerProcessResult && playerAction && playerAction.type === 'strike') {
+        if (playerProcessResult.result && playerProcessResult.result.isSuccess) {
+            newState.player.consecutiveHits += 1;
+            if (newState.player.consecutiveHits === 3) {
+                newLogs.push(rand([
+                    `[FLAVOR] She's finding her rhythm! Even through the fog of hormones, ${newState.player.name}'s gladiator instinct burns bright!`,
+                    `[FLAVOR] A relentless barrage! The crowd chants as ${newState.player.name} presses her advantage despite the weight dragging her down!`,
+                    `[FLAVOR] Three clean hits! The warrior inside the broodsow is clawing her way to the surface, landing blow after brutal blow!`
+                ]));
+            }
+        } else {
+            if (newState.player.consecutiveHits >= 3) {
+                newLogs.push(`[FLAVOR] The momentum shatters! ${newState.player.name}'s traitorous body finally betrays the rhythm!`);
+            }
+            newState.player.consecutiveHits = 0;
+        }
+    }
 
     const applyPassives = (fighterObj, logsArray) => {
       fighterObj.milk += 8;
