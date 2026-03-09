@@ -41,13 +41,25 @@ export const generateActionText = (result, action, attacker, defender, isDefRest
     }
 
     if (action.type === 'rest' || action.type === 'restDowned') {
-        if (isAttackerLean && isAttackerFit) return log + `${attacker.name} breathes sharply, tightly bracing her washboard abs and resetting her gladiator stance!`;
-        if (isAttackerPlush) return log + `${attacker.name} wipes sweat from her plush cleavage, panting heavily as she forces her thick, soft hips to sink into a wide stance.`;
+        if (isAttackerLean && isAttackerFit) return log + rand([
+            `${attacker.name} breathes sharply, tightly bracing her washboard abs and resetting her gladiator stance! Pure spite refuels her mind.`,
+            `${attacker.name} tucks behind a crisp guard, her hard forearms shielding her lean torso. A deep, furious reserve of defiance refills her focus.`,
+            `${attacker.name} drops into a defensive crouch, muscles coiled tight, using the precious seconds to let her elite conditioning reset. Her mind is still a weapon.`
+        ]);
+        if (isAttackerPlush) return log + rand([
+            `${attacker.name} wipes sweat from her plush cleavage, panting heavily as she forces her thick, soft hips to sink into a wide stance.`,
+            `${attacker.name} tucks her swelling belly behind her forearms, creating a fleshy, improvised shield. She finds spite in the weight, using it as cover.`,
+            `Bracing her thickened thighs apart for balance, ${attacker.name} sucks air through gritted teeth, furiously willing her softening core to hold together for one more exchange.`
+        ]);
         return log + rand([
             `The exhausted fighter violently hoists her massive, sloshing ${rand(T_BELLY)} up with her forearms, roaring in effort just to take the crushing pressure off her pulverized spine so she can gasp a single breath.`,
             `${attacker.name} groans through gritted teeth, aggressively digging her puffy fingers into her own gelatinous ${rand(T_FAT)} as she begs her crushed lungs for air.`,
             `A furious, sweaty moan escapes her lips as ${attacker.name} literally uses her massive, sloshing ${rand(T_BELLY)} as a fleshy table to rest her doughy arms.`,
-            `She violently shoves her heavy, oozing ${rand(T_TITS)} aside, desperately trying to expose her ribcage enough to suck in a ragged breath.`
+            `She violently shoves her heavy, oozing ${rand(T_TITS)} aside, desperately trying to expose her ribcage enough to suck in a ragged breath.`,
+            `${attacker.name} wedges her massive, sagging ${rand(T_BELLY)} against the ropes for support, gasping like a landed fish. The weight is unbearable, but her mind refuses to break.`,
+            `Drowning in her own suffocating bulk, ${attacker.name} hooks her doughy arms over the top rope and hangs there, wheezing violently. Her spirit burns even as her body fails.`,
+            `${attacker.name} drops her guard entirely, letting her impossibly heavy ${rand(T_TITS)} hang free just to relieve the crushing pressure on her spine. Pure, furious defiance is all that keeps her upright.`,
+            `She cradles the enormous weight of her ${rand(T_BELLY)} from below, her ruined arms trembling, and forces a single rattling breath. The gladiator inside her screams for just one more exchange.`
         ]);
     }
     if (action.type === 'slowRise' || action.type === 'heaveUp') {
@@ -229,4 +241,44 @@ export const getPitstopLog = (choice, fighter) => {
         default:
             return `${name} rests briefly.`;
     }
+};
+
+export const generateRoundTransition = (round, player, enemy) => {
+    const avgFetal = (player.fetalSize + enemy.fetalSize) / 2;
+    const avgVol = (player.voluptuousness + enemy.voluptuousness) / 2;
+
+    if (round <= 3) {
+        return rand([
+            `The corner crews watch with clinical indifference. Both fighters are still lean, still dangerous. The crowd murmurs in anticipation — the real show hasn't started yet.`,
+            `The arena buzzes with impatient energy. The fighters still look like athletes. The bookmakers know this won't last. It never does.`,
+            `Harsh sodium lights cast long shadows as both fighters retreat to their stools. The canvas is still clean. By the final round, it won't be.`,
+            `A low hum of anticipation fills the Underhive pit. The crowd has seen enough Regulation 88.4 fights to know the first few rounds are just foreplay for the real horror.`
+        ]);
+    }
+
+    if (round <= 6) {
+        return rand([
+            `The crowd stirs as the physical toll becomes visible. ${avgVol > 30 ? "Widening hips and softening cores are clearly evident under the harsh lights." : "The fighters are holding their shape, but the subtle swell of early pregnancy is unmistakable."} The betting boards recalculate.`,
+            `Sweat and the first traces of milk slicken the canvas. The corner crews mop frantically between rounds. ${avgFetal > 4 ? "Both fighters waddle noticeably as they reach their stools." : "The fighters move with visible discomfort, their bellies tightening with each step."}`,
+            `The Underhive crowd is growing louder, more aggressive. They've spotted the softening — the first signs of the hormonal cascade that will turn these warriors into something else entirely.`,
+            `A stale cocktail of breeding-sweat, hormone-laced perspiration, and industrial disinfectant hangs in the recycled air. The audience leans forward in their seats. The degradation is accelerating.`
+        ]);
+    }
+
+    if (round <= 9) {
+        return rand([
+            `The arena erupts as both fighters heave themselves off the canvas. The transformation is undeniable — what stepped into this ring as elite gladiators are now waddling, leaking, hormone-ravaged broodsows struggling against their own flesh.`,
+            `The canvas is a disaster zone — streaked with milk, sweat, and worse. ${avgVol > 60 ? "Both fighters barely fit on their stools, their massive, dimpled thighs spilling over the edges." : "The fighters collapse onto their stools, gasping, their swollen bellies pressing against their thighs."}`,
+            `Corner crews shout instructions that neither fighter can hear over the roaring crowd. The Underhive pit is in full, savage frenzy — this is what they paid to see. The proud gladiators reduced to gasping, jiggling incubators.`,
+            `The overhead biometric display shows catastrophic hormone levels for both fighters. The crowd howls with perverse satisfaction as the numbers spike higher with every passing minute.`
+        ]);
+    }
+
+    // Rounds 10+
+    return rand([
+        `The arena has descended into pure, feral chaos. Both fighters are barely recognizable — massive, sloshing, milk-streaked parodies of the lean warriors who entered this ring. The crowd is standing, screaming, drunk on the spectacle of total biological defeat.`,
+        `The canvas is flooded. Milk, sweat, amniotic fluid — the drainage grates can't keep up. Both fighters collapse into their corners, their ruined bodies unable to stop shaking. The final bell is close. The only question is whether their bodies will hold.`,
+        `Handlers rush in with mops and industrial towels. The stench is overpowering. In the stands, the betting has shifted from "who wins" to "who goes into labor first." The Underhive pit has seen its share of horrors, but the final rounds of Regulation 88.4 never fail to deliver.`,
+        `The crowd chants in rhythmic, degrading unison. Both fighters sit motionless on their stools, their impossibly heavy bellies resting on their fat, splayed thighs. The corner crews slap their faces, screaming at them to get back up. The bell is merciless.`
+    ]);
 };

@@ -43,6 +43,7 @@ export const INITIAL_STATE = {
     inHeat: false,
     isDistracted: false,
     isAdvancing: false,
+    consecutiveHits: 0,
     effect: { type: null, turn: 0 }
   },
   enemy: {
@@ -66,6 +67,7 @@ export const INITIAL_STATE = {
     inHeat: false,
     isDistracted: false,
     isAdvancing: false,
+    consecutiveHits: 0,
     effect: { type: null, turn: 0 }
   },
   log: [
