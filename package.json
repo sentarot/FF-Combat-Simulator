@@ -4,6 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "predev": "node -e \"try{require('rollup/dist/native.js')}catch(e){console.error('Rollup native module missing. Run: rm -rf node_modules package-lock.json && npm install');process.exit(1)}\"",
+    "prebuild": "node -e \"try{require('rollup/dist/native.js')}catch(e){console.error('Rollup native module missing. Run: rm -rf node_modules package-lock.json && npm install');process.exit(1)}\"",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
