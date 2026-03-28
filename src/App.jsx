@@ -350,7 +350,7 @@ function App() {
       if (fighter.arousal >= 70) {
           if (!fighter.inHeat && !fighter.isDowned) {
               fighter.inHeat = true;
-              logsArray.push(`*** SAVAGE HEAT! ${fighter.name}'s mind screams in trapped horror as her dripping, ruthlessly congested anatomy completely hijacks her nervous system, forcing her to violently rut! ***`);
+              logsArray.push(`*** SAVAGE HEAT! ${fighter.name}'s overburdened body finally wins — the constant grinding arousal hijacks her mind, forcing her to rut openly and humiliatingly! ***`);
           }
       } else {
           if (fighter.inHeat) {
@@ -377,10 +377,10 @@ function App() {
               }
 
               if (!fighter.isDowned) {
-                  triggerKnockdown(fighter, logsArray, `*** CLIMAX! ${fighter.name}'s furious edging breaks! The painful, humiliating intensity of emptying her backed-up balls into her shorts drops her to her knees! The violent spasming in her core actively agitates her male fetuses! ${growthStr} ***`);
+                  triggerKnockdown(fighter, logsArray, `*** CLIMAX! ${fighter.name}'s body wins — the crushing burden has ground her into an involuntary, humiliating public climax that drops her to her knees! The spasming agitates the ${rand(T_BRATS)}! ${growthStr} ***`);
               } else {
                   fighter.recoveryProgress = 0;
-                  logsArray.push(`*** CLIMAX! Writhing on the mat, the humiliating intensity of emptying her loaded balls shatters ${fighter.name}'s focus! The violent core spasms actively agitate the male fetuses, completely resetting her struggle to rise! ${growthStr} ***`);
+                  logsArray.push(`*** CLIMAX! Pinned under her own crushing burden, ${fighter.name} climaxes helplessly on the mat — the humiliating spasms agitate the ${rand(T_BRATS)}, resetting her recovery! ${growthStr} ***`);
               }
           }
       }
@@ -460,21 +460,21 @@ function App() {
         if (Math.random() > 0.4) return;
 
         let possible = [];
-        if (fighter.fetalSize >= 10) possible.push(`The massive ${rand(T_BRATS)} violently ${rand(T_BRAT_ACT)} against her flattened bladder. ${fighter.name} gasps, sobbing in furious humiliation as she involuntarily pisses a hot stream down her legs.`);
-        if (fighter.fetalSize >= 12) possible.push(`A violent Braxton Hicks contraction ripples across ${fighter.name}'s drum-tight ${rand(T_BELLY)}, forcing a guttural moan from her lips despite her desperate attempt to stay silent.`);
-        if (fighter.milk >= 60) possible.push(`${fighter.name} claps a hand over her mouth, but a filthy, hormone-drenched moan escapes anyway as hot milk suddenly sprays from her over-inflated ${rand(T_TITS)}.`);
-        if (fighter.voluptuousness >= 60) possible.push(`${fighter.name} attempts to shift her massive weight, but the agonizing friction of her intensely chafing, cellulite-choked ${rand(T_FAT)} makes her furiously whimper and stagger.`);
-        if (fighter.arousal >= 60 && !fighter.inHeat) possible.push(`A sudden, violent throb in her congested slit makes ${fighter.name} abruptly grind her incredibly fat thighs together. She bites her lip until it bleeds to stop the rutting.`);
-        if (fighter.arousal >= 80 && !fighter.inHeat) possible.push(`${fighter.name}'s dripping futa-meat bulges visibly through her soaked, ruined shorts. She punches her own thigh in sheer rage, completely betrayed by her fighting focus.`);
+        if (fighter.fetalSize >= 10) possible.push(`The ${rand(T_BRATS)} ${rand(T_BRAT_ACT)} against ${fighter.name}'s bladder — she pisses herself, the shameful release sending a wave of arousal through her pelvic floor.`);
+        if (fighter.fetalSize >= 12) possible.push(`A Braxton Hicks contraction grinds ${fighter.name}'s crushing ${rand(T_BELLY)} directly onto her prostate — she moans despite herself, the forced arousal and the burden indistinguishable.`);
+        if (fighter.milk >= 60) possible.push(`Hot milk suddenly sprays from ${fighter.name}'s heavy, aching ${rand(T_TITS)} — the letdown reflex sends a humiliating pulse of arousal straight to her loins.`);
+        if (fighter.voluptuousness >= 60) possible.push(`${fighter.name}'s heavy thighs chafe together as she shifts — the friction on her oversensitized flesh makes her whimper with involuntary arousal.`);
+        if (fighter.arousal >= 60 && !fighter.inHeat) possible.push(`${fighter.name} abruptly grinds her heavy thighs together — the burden-induced arousal is constant, and she can't stop the friction from making it worse.`);
+        if (fighter.arousal >= 80 && !fighter.inHeat) possible.push(`${fighter.name}'s engorged anatomy bulges visibly through her shorts — the crushing weight on her prostate has her body openly, humiliatingly aroused.`);
 
         if (fighter.fetalSize >= 9) {
-            possible.push(`The sheer, unfair gravitational pull of ${fighter.name}'s low-slung ${rand(T_BELLY)} makes her spine pop audibly. She whines in pure agony, completely trapped in her own flesh.`);
-            possible.push(`A massive, distinct hand pushes forcefully outward against the drum-tight skin of ${fighter.name}'s unbelievably heavy ${rand(T_BELLY)}, violently stretching her beyond human limits.`);
+            possible.push(`The crushing weight of ${fighter.name}'s ${rand(T_BELLY)} makes her spine pop — the shifting burden grinds fetal mass across her prostate, and she shudders.`);
+            possible.push(`A fetal hand presses outward against ${fighter.name}'s drum-tight ${rand(T_BELLY)}, shifting the crushing mass directly onto her prostate — she gasps at the unwanted jolt.`);
         }
 
         if (fighter.fetalSize >= 8 && fighter.voluptuousness < 90) {
-            possible.push(`The massive, squirming fetuses forcefully feed on her athletic core! ${fighter.name} gasps, sobbing in furious humiliation as she physically feels her tight abs literally softening into dimpled, squishy ${rand(T_FAT)}.`);
-            possible.push(`${fighter.name}'s incredibly heavy, overbred body betrays her! The greedy ${rand(T_BRATS)} eagerly consume her muscular strength, leaving her standing there as a panting, helpless piece of squishy broodsow meat.`);
+            possible.push(`The ${rand(T_BRATS)} feed on ${fighter.name}'s muscle — she feels her core softening into heavy, treacherously sensitive ${rand(T_FAT)} that makes every touch arousing.`);
+            possible.push(`${fighter.name}'s body betrays her — the ${rand(T_BRATS)} melt her muscle into heavy, pendulous new padding on her ${rand(T_TITS)} and hips, adding more aching, arousal-inducing burden.`);
         }
 
         if (possible.length > 0) {
@@ -576,14 +576,14 @@ function App() {
             newState.player.consecutiveHits += 1;
             if (newState.player.consecutiveHits === 3) {
                 newLogs.push(rand([
-                    `[FLAVOR] She's finding her rhythm! Even through the fog of hormones, ${newState.player.name}'s gladiator instinct burns bright!`,
-                    `[FLAVOR] A relentless barrage! The crowd chants as ${newState.player.name} presses her advantage despite the weight dragging her down!`,
-                    `[FLAVOR] Three clean hits! The warrior inside the broodsow is clawing her way to the surface, landing blow after brutal blow!`
+                    `[FLAVOR] Three clean hits! ${newState.player.name} fights through the burden and finds her rhythm!`,
+                    `[FLAVOR] A barrage despite the crushing weight! ${newState.player.name} presses her advantage!`,
+                    `[FLAVOR] Three hits! The fighter inside the overburdened body is still alive!`
                 ]));
             }
         } else {
             if (newState.player.consecutiveHits >= 3) {
-                newLogs.push(`[FLAVOR] The momentum shatters! ${newState.player.name}'s traitorous body finally betrays the rhythm!`);
+                newLogs.push(`[FLAVOR] The momentum breaks — ${newState.player.name}'s heavy, burdened body finally betrays her rhythm!`);
             }
             newState.player.consecutiveHits = 0;
         }
@@ -606,18 +606,18 @@ function App() {
           if (Math.random() > meltChance) {
               fighterObj.effect = { type: 'agitate', turn: newState.turn + 1 };
               const muscleMelts = [
-                  `The greedy ${rand(T_BRATS)} inside ${fighterObj.name} ruthlessly steal her strength mid-fight! Her hard muscle actively melts to feed them, dumping the excess calories into soft, squishy padding on her hips and chest!`,
-                  `Biological theft! The demanding ${rand(T_BRATS)} actively strip-mine ${fighterObj.name}'s athletic core, dissolving her lean muscle into deeply humiliating ${rand(T_FAT)} just to sustain their massive growth!`,
-                  `${fighterObj.name} gasps as a violent hormonal spike forces her body to prioritize the pregnancy! Her hard-won muscle rapidly cannibalizes itself, softening into heavy, estrogenic ${rand(T_FAT)} to feed the ${rand(T_BRATS)}!`,
-                  `A sickening rush of heat floods ${fighterObj.name}'s limbs as the massive ${rand(T_BRATS)} aggressively demand calories! She literally feels her fighting strength melting into jiggly, yielding ${rand(T_SOFT)}!`,
-                  `Traitorous biology! To satisfy the squirming ${rand(T_BRATS)}, ${fighterObj.name}'s own metabolism violently breaks down her athletic power, aggressively packing thick, grab-able ${rand(T_FAT)} onto her frame right before your eyes!`
+                  `The ${rand(T_BRATS)} steal ${fighterObj.name}'s muscle, melting it into heavy, aching padding on her ${rand(T_TITS)} and hips — heavier, more sensitive, more encumbered!`,
+                  `${fighterObj.name}'s lean muscle dissolves into soft, pendulous ${rand(T_FAT)} — adding more crushing burden and treacherous sensitivity to her already overburdened body!`,
+                  `${fighterObj.name} gasps as her strength melts into heavy ${rand(T_FAT)} on her ${rand(T_TITS)} and thighs — the new softness aches with humiliating sensitivity!`,
+                  `The ${rand(T_BRATS)} demand calories — ${fighterObj.name}'s fighting muscle melts into pendulous new weight on her chest and hips, adding more arousal-inducing burden!`,
+                  `${fighterObj.name}'s athletic power dissolves into heavy, aching ${rand(T_FAT)} — her pendulous ${rand(T_TITS)} swell heavier, more sensitive, dragging her down!`
               ];
               logsArray.push(`[WARNING] ${rand(muscleMelts)} (+Fat, -Muscle)`);
           }
       }
 
       if (fighterObj.fetalSize >= 10 && Math.random() > 0.8 && !fighterObj.isDowned) {
-          logsArray.push(`[WARNING] Hefting the violently heavy, squirming ${rand(T_BRATS)} is physically crushing ${fighterObj.name}'s spine, passively draining her stamina!`);
+          logsArray.push(`[WARNING] The crushing weight of the ${rand(T_BRATS)} grinds ${fighterObj.name}'s spine — the burden shifts onto her prostate, draining her stamina and spiking her arousal!`);
       }
     };
 
@@ -670,12 +670,12 @@ function App() {
         }
         aState.player.arousal = 65;
         aState.player.will -= 40;
-        aState.log.push(`*** DEFIANCE! You burn 40 Willpower! You bite your lip until it bleeds, violently clamping your hips together to forcefully deny the humiliating climax! You are edging on the absolute brink! ***`);
+        aState.log.push(`*** DEFIANCE! You burn 40 Willpower! You clamp your heavy thighs together, fighting the crushing burden's constant grinding on your prostate — barely denying the humiliating public climax! ***`);
 
         newState.phase = 'interrupt';
         newState.interrupt = {
             title: "SENSORY OVERLOAD",
-            text: `Your heavily congested futa-meat violently throbs! The agonizing pressure of your backed-up seed is forcing an explosive, stamina-draining climax right here on the mat!`,
+            text: `The crushing burden on your prostate has pushed you to the edge — your backed-up anatomy throbs violently, forcing a humiliating public climax!`,
             action: "Clench Hips & Edge",
             cost: 40,
             acceptState: finalizeStatePhase(aState),
@@ -689,12 +689,12 @@ function App() {
         aState.player.inHeat = false;
         aState.player.arousal = 60;
         aState.player.will -= 20;
-        aState.log.push(`*** DEFIANCE! You burn 20 Willpower! You punch your own squishy thigh in pure spite, snapping your preggo-brain out of the hormonal rut! ***`);
+        aState.log.push(`*** DEFIANCE! You burn 20 Willpower! You fight through the crushing burden's grinding arousal, forcing your mind back from the brink of Savage Heat! ***`);
 
         newState.phase = 'interrupt';
         newState.interrupt = {
             title: "ENDOCRINE OVERRIDE",
-            text: `Your preggo-brain is melting into pure Savage Heat. The overwhelming lust is forcing your heavy hips to involuntarily rut!`,
+            text: `The crushing burden has ground your prostate into constant arousal — your overburdened body is forcing you into Savage Heat!`,
             action: "Bite Lip & Suppress",
             cost: 20,
             acceptState: finalizeStatePhase(aState),
@@ -803,10 +803,10 @@ function App() {
                     fighter.isDistracted = false;
                     const ruinLevel = 1 + Math.floor(fighter.fetalSize / 3) + Math.floor(fighter.voluptuousness / 20);
                     fighter.recoveryThreshold = clamp(ruinLevel, 2, 9);
-                    newState.log = [...newState.log, `*** CLIMAX! ${fighter.name}'s furious edging breaks! ${growthStr} ***`];
+                    newState.log = [...newState.log, `*** CLIMAX! The crushing burden grinds ${fighter.name} into a humiliating public climax! ${growthStr} ***`];
                 } else {
                     fighter.recoveryProgress = 0;
-                    newState.log = [...newState.log, `*** CLIMAX! ${fighter.name} climaxes on the mat! ${growthStr} ***`];
+                    newState.log = [...newState.log, `*** CLIMAX! Pinned under her own weight, ${fighter.name} climaxes helplessly on the mat! ${growthStr} ***`];
                 }
             }
         }
@@ -830,28 +830,27 @@ function App() {
             let msg = "";
             if (queued === 0) {
                 msg = rand([
-                    `${name} suffers her natural +1 Month fetal growth. Her engineered male parasites demand calories, slowly cannibalizing her muscle to fuel their growth and dumping the excess into soft, dense fat on her hips and tits (+${volGain} Voluptuousness). Her ${rand(T_JOINTS)} buckle slightly under the new meat (+${strainGain} Strain).`,
-                    `Time marches on, forcing ${name}'s body through another natural +1 Month of pregnancy. The male fetuses drain her energy, packing on more heavy, squishy ${rand(T_FAT)} straight onto her extreme hourglass frame (+${volGain} Voluptuousness) as her aching knees pop (+${strainGain} Strain).`,
-                    `The bell grants no mercy. Between rounds, the ${rand(T_BRATS)} quietly gorge themselves on ${name}'s dwindling muscle reserves, inflating her ${rand(T_TITS)} with backed-up colostrum and thickening her thighs with dense ${rand(T_FAT)} (+${volGain} Voluptuousness). Her ${rand(T_JOINTS)} creak ominously under the redistributed mass (+${strainGain} Strain).`,
-                    `Even at rest, the parasites never stop. ${name} feels the sick warmth of her body surrendering another month's worth of muscle to the ${rand(T_BRATS)}, the stolen calories settling as heavy, sloshing padding on her hips and chest (+${volGain} Voluptuousness). Her prostate throbs under the growing fetal weight, and her overloaded ${rand(T_JOINTS)} pop audibly as she shifts on her stool (+${strainGain} Strain).`
+                    `${name} suffers +1 Month growth. The ${rand(T_BRATS)} cannibalize her muscle into heavy padding on her ${rand(T_TITS)} and hips — more aching burden, more sensitivity (+${volGain} Voluptuousness). Her ${rand(T_JOINTS)} buckle under the new weight (+${strainGain} Strain).`,
+                    `Natural +1 Month. The ${rand(T_BRATS)} melt ${name}'s muscle into pendulous new weight on her chest and thighs — heavier, more sensitive, the burden grinding deeper onto her prostate (+${volGain} Voluptuousness, +${strainGain} Strain).`,
+                    `Between rounds, the ${rand(T_BRATS)} gorge on ${name}'s muscle, inflating her ${rand(T_TITS)} heavier and thickening her thighs — more crushing burden, more aching sensitivity (+${volGain} Voluptuousness, +${strainGain} Strain).`
                 ]);
             } else if (queued <= 2) {
                 msg = rand([
-                    `${name} suffers natural +1 Month growth, but the sloshed hormones violently vent! The testy male ${rand(T_BRATS)} force an additional +${queued} Months! They demand massive calories, melting her muscle and aggressively forcing an extreme, heavy-bottomed hourglass frame (+${volGain} Voluptuousness) and her joints groan under the sudden weight (+${strainGain} Strain).`,
-                    `The agitated ${rand(T_BRATS)} punish ${name} for every belly blow she absorbed! Beyond the natural +1 Month, they force +${queued} Months of accelerated growth, their hormonal tantrum dissolving her lean fighting muscle into thick, heavy ${rand(T_FAT)} that packs itself onto her widening frame (+${volGain} Voluptuousness). Relaxin floods her cartilage as her skeleton scrambles to accommodate the surging mass (+${strainGain} Strain).`,
-                    `${name}'s corner crew watches in barely concealed horror as her belly visibly swells between rounds. Natural growth plus +${queued} agitation-forced Months — the ${rand(T_BRATS)} are cannibalizing her at an accelerated rate, melting her athletic definition into dense, sloshing ${rand(T_FAT)} (+${volGain} Voluptuousness) while her relaxin-softened ${rand(T_JOINTS)} groan under every new ounce (+${strainGain} Strain).`
+                    `The agitated ${rand(T_BRATS)} force +${queued} extra Months on top of natural growth! ${name}'s muscle melts into heavy, pendulous ${rand(T_FAT)} on her ${rand(T_TITS)} and hips — the added burden grinds more weight onto her prostate (+${volGain} Voluptuousness, +${strainGain} Strain).`,
+                    `+${queued} agitation-forced Months! ${name}'s ${rand(T_TITS)} swell heavier and more sensitive, her thighs thicken with aching ${rand(T_FAT)} — every ounce of new burden adds to the constant prostate pressure (+${volGain} Voluptuousness, +${strainGain} Strain).`,
+                    `${name} visibly swells between rounds — +${queued} forced Months, muscle dissolving into heavy, pendulous padding that makes her ${rand(T_TITS)} ache with sensitivity and her ${rand(T_JOINTS)} groan under the crushing new weight (+${volGain} Voluptuousness, +${strainGain} Strain).`
                 ]);
             } else if (queued <= 4) {
                 msg = rand([
-                    `CATASTROPHIC GROWTH! ${name}'s battered womb dumps massive amounts of raw hormones as the male fetuses aggressively demand calories! Along with her natural +1 Month, she instantly swells by +${queued} extra Months! Her muscle is instantly cannibalized, the excess calories violently expanding her tits and thighs into a heavy, leaking fuckmattress pornbody (+${volGain} Voluptuousness)! Her skeleton shrieks in agony (+${strainGain} Strain)!`,
-                    `HORMONAL AVALANCHE! The relentlessly agitated ${rand(T_BRATS)} detonate a cascading hormonal event inside ${name}! Her natural +1 Month plus +${queued} forced Months of explosive growth visibly inflate her belly in real time — the crowd GASPS as her lean fighter's frame is violently buried under wave after wave of dense, heavy ${rand(T_FAT)} (+${volGain} Voluptuousness)! Her ${rand(T_JOINTS)} buckle and grind as her pelvis tries to widen fast enough to contain the catastrophe (+${strainGain} Strain)!`,
-                    `METABOLIC MELTDOWN! ${name} doubles over, sobbing in rage, as the agitated litter triggers +${queued} Months of accelerated growth on top of natural progression! Her body enters full crisis mode — muscles dissolving in real time, the stolen mass instantly redistributed into obscenely thick ${rand(T_FAT)} on her hips, belly, and chest (+${volGain} Voluptuousness)! The structural damage to her ${rand(T_JOINTS)} is audible from the cheap seats (+${strainGain} Strain)!`
+                    `CATASTROPHIC GROWTH! +${queued} forced Months! ${name}'s muscle is instantly converted into crushing, pendulous weight on her ${rand(T_TITS)} and hips — the sudden burden slams onto her prostate and her ${rand(T_JOINTS)} shriek (+${volGain} Voluptuousness, +${strainGain} Strain)!`,
+                    `HORMONAL AVALANCHE! +${queued} forced Months of explosive growth! ${name}'s body is buried under heavy new ${rand(T_FAT)} — her ${rand(T_TITS)} swell enormous and aching, the crushing new burden grinding constant arousal into her (+${volGain} Voluptuousness, +${strainGain} Strain)!`,
+                    `METABOLIC MELTDOWN! +${queued} forced Months! ${name}'s muscle dissolves into pendulous, aching weight on her ${rand(T_TITS)} and hips — the instant new burden is overwhelming, and her ${rand(T_JOINTS)} buckle (+${volGain} Voluptuousness, +${strainGain} Strain)!`
                 ]);
             } else {
                 msg = rand([
-                    `BIOLOGICAL DEFEAT! ${name}'s preggo-brain and battered womb completely overflow with pure, unadulterated breeding hormones! The genetically engineered male fetuses demand total caloric sacrifice! Adding to the natural +1 Month, her violently overstuffed belly expands by a shamelessly massive +${queued} Months! Her athletic muscle is completely erased, replaced by a highly titillating, extreme hourglass figure packed with dense, meaty breederfat on her hips and chest (+${volGain} Voluptuousness)! Her joints practically shatter (+${strainGain} Strain)!`,
-                    `TOTAL METABOLIC COLLAPSE! The ${rand(T_BRATS)} have won. ${name}'s body detonates +${queued} forced Months of growth on top of natural progression — a biological coup d'état that obliterates every ounce of her remaining muscle in seconds. Her lean fighter's physique is erased like it never existed, replaced by an obscene monument of dense, sloshing ${rand(T_FAT)} piled onto a violently widened frame (+${volGain} Voluptuousness). Her ${rand(T_JOINTS)} shatter like wet chalk under the catastrophic new weight (+${strainGain} Strain). The crowd is SCREAMING.`,
-                    `PREGNANCY SINGULARITY! ${name}'s womb has gone nuclear — +${queued} agitation-driven Months stacked onto natural growth in a single, horrifying cascade! Her body doesn't just change, it TRANSFORMS: muscle liquefied, calories weaponized, every stolen gram of athletic power reforged into pounds of thick, heavy, estrogenic ${rand(T_FAT)} that buries her fighting frame alive (+${volGain} Voluptuousness). Her skeleton — already softened by months of relaxin — buckles catastrophically under the instant mass increase (+${strainGain} Strain). She screams, not in surrender, but in pure, incandescent RAGE.`
+                    `BIOLOGICAL DEFEAT! +${queued} forced Months! ${name}'s muscle is completely erased — replaced by crushing, pendulous ${rand(T_FAT)} on her ${rand(T_TITS)} and hips. The unbearable new burden grinds her prostate into constant, involuntary arousal (+${volGain} Voluptuousness, +${strainGain} Strain)!`,
+                    `TOTAL COLLAPSE! +${queued} forced Months! ${name}'s fighting body is buried alive under heavy, aching ${rand(T_FAT)} — enormous pendulous ${rand(T_TITS)}, crushing hips, the added burden keeping her prostate under permanent, arousal-inducing siege (+${volGain} Voluptuousness, +${strainGain} Strain)!`,
+                    `PREGNANCY SINGULARITY! +${queued} forced Months! ${name}'s muscle liquefies into pounds of heavy, pendulous, aching ${rand(T_FAT)} — the instant, crushing burden is so total that her prostate is under constant grinding arousal, and her ${rand(T_JOINTS)} buckle catastrophically (+${volGain} Voluptuousness, +${strainGain} Strain)!`
                 ]);
             }
             newState.log = [...newState.log, msg];
