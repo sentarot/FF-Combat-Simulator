@@ -176,7 +176,7 @@ npm install
 npm run dev
 ```
 
-This launches a local server (typically at `http://localhost:5173`). Open that URL in your browser to play.
+This launches a local server. Open `http://[::1]:5173/` in your browser to play.
 
 ### Building for Production
 
